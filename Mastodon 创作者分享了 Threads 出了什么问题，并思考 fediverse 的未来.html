@@ -1,0 +1,626 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'><style type='text/css'>html {overflow-x: initial !important;}</style>
+<style type='text/css'  id="style-base">:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, "Segoe UI Emoji", "SF Pro", sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p *, #write.first-line-indent svg * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; position: relative; }
+#write svg h1, #write svg h2, #write svg h3, #write svg h4, #write svg h5, #write svg h6, #write svg p { position: static; white-space: nowrap; overflow: visible; }
+foreignobject { overflow: visible; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+li p { orphans: 1; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.mermaid-svg { margin: auto; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+.md-alert.md-alert-note { border-left-color: rgb(9, 105, 218); }
+.md-alert.md-alert-important { border-left-color: rgb(130, 80, 223); }
+.md-alert.md-alert-warning { border-left-color: rgb(154, 103, 0); }
+.md-alert.md-alert-tip { border-left-color: rgb(31, 136, 61); }
+.md-alert.md-alert-caution { border-left-color: rgb(207, 34, 46); }
+.md-alert { padding: 0px 1em; margin-bottom: 16px; color: inherit; border-left: 0.25em solid rgb(0, 0, 0); }
+.md-alert-text-note { color: rgb(9, 105, 218); }
+.md-alert-text-important { color: rgb(130, 80, 223); }
+.md-alert-text-warning { color: rgb(154, 103, 0); }
+.md-alert-text-tip { color: rgb(31, 136, 61); }
+.md-alert-text-caution { color: rgb(207, 34, 46); }
+.md-alert-text { font-size: 0.9rem; font-weight: 700; }
+.md-alert-text svg { fill: currentcolor; position: relative; top: 0.125em; margin-right: 1ch; overflow: visible; }
+.md-alert-text-container::after { content: attr(data-text); text-transform: capitalize; pointer-events: none; margin-right: 1ch; }
+
+</style>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&amp;subset=latin,latin-ext' type='text/css' />
+<style type='text/css'  id="style-theme_css">:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', 'SF Pro', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.mac-os #write{
+    caret-color: AccentColor;
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+</style>
+<style type='text/css'  id="style-lp">ol, ul {padding-left: 40px}</style>
+
+<title>Mastodon 创作者分享了 Threads 出了什么问题，并思考 fediverse 的未来</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='mastodon-创作者分享了-threads-出了什么问题并思考-fediverse-的未来'><span>Mastodon 创作者分享了 Threads 出了什么问题，并思考 fediverse 的未来</span></h1><p><span>在一次与去中心化社交网络 Mastodon 创始人 Eugen Rochko 的广泛访谈中，Rochko 分享了 Threads 联盟为何失败，ActivityPub 和 ATProto 很可能永远不会合并，以及如何推动联盟多样性的发展。</span></p><p><img src="https://coywolf.com/wp-content/uploads/2025/06/b23d2a8517f1c253b8b922857a9bd192be8e87a3008ab90ac57c32e4cb382584-150x150.jpeg" alt="Headshot for Jon Henshaw"></p><p><strong><span>乔</span><a href='https://coywolf.com/jon-henshaw/'><span>恩·亨肖</span></a><span>在</span></strong><a href='https://coywolf.com/news/social-media/'><span>社交媒体新闻</span></a><span>报道</span>
+<span>Nov 29, 2025（最后更新时间）</span></p><p><img src="https://coywolf.com/wp-content/uploads/2025/11/eugen-rochko-mastodon.webp" alt="Eugen Rochko of Mastodon"><span>尤金·罗什科，猛犸象的创造者</span></p><p><span>自从 2010 年 </span><a href='https://en.wikipedia.org/wiki/Diaspora_(social_network)'><span>Diaspora</span></a><span> 推出以来，我一直对掌控自己的社交形象充满了兴趣。Diaspora，像许多其他逐渐消亡的去中心化解决方案一样，试图解决封闭社交平台的问题：没有互作性，无法真正控制你的动态，没有数据隐私，没有选择退出广告的方式，也无法将个人资料迁移到其他地方。</span></p><p><span>虽然我当时忍受着认为最好的选择——一个马斯克出现前的推特，而一位名叫</span><a href='https://github.com/gargron'><span>尤金·罗奇科</span></a><span>的网页开发者正忙着打造最终成为我主要社交网络的平台——</span><a href='https://joinmastodon.org/'><span>Mastodon</span></a><span>。</span></p><p><span>我于 2022 年加入 Mastodon，并在 </span><a href='https://henshaw.social/'><span>henshaw.social</span></a><span> 创建了一个单用户实例，我托管在 </span><a href='https://masto.host/'><span>Masto Host</span></a><span> 上。 </span><strong><span>我被能够用自己的域名 100%控制社交存在感的能力所吸引，同时还能关注和互动无数其他 Mastodon 服务器和其他支持 </span><a href='https://activitypub.rocks/'><span>ActivityPub 协议</span></a><span>的 </span><a href='https://glossary.io/fediverse/'><span>Fediverse</span></a><span> 平台的人。</span></strong></p><p><img src="https://coywolf.com/wp-content/uploads/2025/11/mastodon-profile-page.webp" alt="Mastodon profile page"><span>在 henshaw.social 托管的单人实例上的猛犸象个人主页</span></p><p><span>在</span><a href='https://coywolf.com/news/social-media/twitter-alternative-mastodon/'><span>完全放弃集中式社交网络 </span></a><span>（除了 LinkedIn）之后，我可以坦率地说我很喜欢使用 Mastodon。我关注有趣的人，没有 X 和 Meta（Facebook、Instagram 等）后心理健康好多了，没有表演性帖子让我感到耳目一新。 </span><strong><span>我关注并互动的人，轻松屏蔽机器人、垃圾信息发送者和烦人的人，不在乎粉丝数，享受无算法的动态，没有广告，也没有人无实意发布内容。</span></strong><span> 所以，当 Mastodon 的创始人宣布辞去 </span><a href='https://blog.joinmastodon.org/2025/11/my-next-chapter-with-mastodon/'><span>CEO</span></a><span> 职务并将商标及其他资产的所有权转让给这家非营利组织时，我才注意到了这一点。</span></p><p><span>多年来我通过 Mastodon 与 Rochko 交流过，但从未与他面对面交谈过。我认为他是重新启动 </span><a href='https://coywolf.com/podcast/'><span>Coywolf 播客</span></a><span>的完美人选，尤其是在 Mastodon 正在进行重大变化的情况下。但主要是想更多地了解尤金。他在 Mastodon 之前做了什么？经营 Mastodon 是什么感觉？他接下来打算做什么？</span></p><h2 id='尤金罗奇科访谈亮点'><span>尤金·罗奇科访谈亮点</span></h2><h2 id='📝-编者按'><span>📝 编者按</span></h2><p><span>以下对话经过删减以保证简洁和清晰，但原始未删减版本可在</span><a href='https://coywolf.com/news/social-media/mastodon-creator-shares-what-went-wrong-with-threads-and-ponders-the-future-of-the-fediverse/#h-listen-to-the-full-interview'><span>完整音频采访</span></a><span>中收听或阅读文字记录。</span></p><ul><li><p><a href='https://coywolf.com/news/social-media/mastodon-creator-shares-what-went-wrong-with-threads-and-ponders-the-future-of-the-fediverse/#h-why-threads-interoperability-with-mastodon-fell-flat'><span>为什么 Threads 与 Mastodon 的互作性失败了</span></a></p></li><li><p><a href='https://coywolf.com/news/social-media/mastodon-creator-shares-what-went-wrong-with-threads-and-ponders-the-future-of-the-fediverse/#h-what-it-will-take-to-get-people-to-switch-to-the-fediverse-open-social-web'><span>要让人们转向 fediverse（开放社交网络）需要什么</span></a></p></li><li><p><a href='https://coywolf.com/news/social-media/mastodon-creator-shares-what-went-wrong-with-threads-and-ponders-the-future-of-the-fediverse/#h-why-rochko-views-mastodon-as-a-social-network-instead-of-a-social-media-platform'><span>为什么 Rochko 把 Mastodon 看作“社交网络”而不是“社交媒体平台”</span></a></p></li><li><p><a href='https://coywolf.com/news/social-media/mastodon-creator-shares-what-went-wrong-with-threads-and-ponders-the-future-of-the-fediverse/#h-why-mastodon-chose-activitypub-and-whether-or-not-it-will-ever-merge-with-atproto'><span>Mastodon 为何选择 ActivityPub 及其是否会与 ATProto 合并</span></a></p></li></ul><h3 id='为什么-threads-与-mastodon-的互作性失败了'><span>为什么 Threads 与 Mastodon 的互作性失败了</span></h3><p><strong><span>Jon Henshaw</span></strong><span>：当</span><a href='https://coywolf.com/news/social-media/mark-zuckerberg-explains-why-threads-is-joining-the-fediverse/'><span>扎克伯格和 Meta 认真</span></a><span>考虑将 ActivityPub 整合进 </span><a href='https://www.threads.com/'><span>Threads</span></a><span> 时，我感到非常兴奋。我认识的很多人都说，“这不可能”，“他们会搞砸”，但我以为这次是真的。The Verge 有几次很好的采访，让我相信他们对这部电影很有信心。不过，虽然我看到了一些很棒的更新，也有一些不太好的。感觉他们做了糟糕的选择，很可能是因为他们的法务部门。</span></p><p><strong><span>尤金·罗奇科</span></strong><span> ：我完全会这么说。就像</span><a href='https://en.wikipedia.org/wiki/Cambridge_Analytica'><span>剑桥分析</span></a><span>烧毁了他们，他们不想重蹈覆辙。这限制了他们的行动。我显然不能代表他们发言。我已经很久没和他们那边的人说话了。但从我们发布时的讨论来看，他们问了关于实施细节以及如何做不同事情的问题。结果发现他们因为法务部门的问题无法做任何事情，这让我非常失望。我觉得他们推出的产品很有潜力，但最终并没有兑现承诺。让联邦支持一个额外选择加入的概念，而人们甚至都不知道，这并没有帮助，而且有几个细节设计得非常谨慎，几乎让人感到疏离，比如每 30 天弹出一个窗口，询问用户是否还想继续 Fediverse share。好像在说，“天哪，我不知道，别这样。”</span></p><p><img src="https://coywolf.com/wp-content/uploads/2025/11/threads-continue-sharing-fediverse-popup.webp" alt="Continue sharing to the fediverse popup on Threads"><span>“继续向联邦多样性分享？”Threads 弹窗</span></p><p><strong><span>JH</span></strong><span>：这简直是个笑话，也很糟糕。听起来一开始还挺不错的。人们在心、思想以及最初意图上都处于正确的位置。从 </span><a href='https://www.theverge.com/23889057/mark-zuckerberg-meta-ai-elon-musk-threads-quest-interview-decoder'><span>《The Verge》对马克的一些采访</span></a><span>来看，他们的意图是真诚的，他们希望创造互作性。但由于法律问题，这一切几乎停滞了。</span></p><p><strong><span>ER：</span></strong><span> 虽然还远非完美，但同时我在主页看到有人在 Threads 上，这对我来说是个很大的进步。否则这是不可能的。我觉得这也提升了体验。有些人可能不同意，因为它仍然和 Meta 有关，不想看到 Threads 的内容。但对于那些关心与主流人士、创作者等保持联系的人来说，这可能是一次充实而非负面的经历。</span></p><p><strong><span>JH</span></strong><span>：我完全同意。我本来想说，我们确实知道有很多直言不讳的人和管理实例的人认为 Threads 是个瞬间屏蔽。但对于像我们这样的人，我很感激我们能关注 Threads 上的人们以保持信息更新。即使是最基础的 ActivityPub 集成，我至少还能关注他们，他们甚至可能知道我参与了他们的帖子，尽管这仍然受限。Threads 上还有很多好人我想听听。</span></p><p><em><span>采访后半段，尤金进一步阐述了为什么 Threads 可能停止开发联邦相关功能。</span></em></p><p><strong><span>ER：</span></strong><span> 我认为当时参与 Threads 的工程师们对做去中心化的项目感到兴奋，参与 Fediverse。在 Twitter 上线之前，他们觉得在组织层面需要向 Twitter 承诺一些不同的承诺，给予创作者更多的自由活动，实现去中心化，基本上为他们提供一层安全保障，防止 Twitter 上发生的事情，从而获得市场份额。但事实证明，一旦他们上线，用户依然很多，优先事项也迅速转变。所以，他们不再关注缺少的 fediverse 功能，而是变成了“我们需要在侧边栏里加入一个 NBA 比分小部件”之类的说法。我认为，唯一能让它重新进入路线图的办法，就是让更多公司、平台和社区将 fedivers 纳入战略中，这将促使他们重新聚焦于此。</span></p><h3 id='要让人们转向-fediverse开放社交网络需要什么'><span>要让人们转向 fediverse（开放社交网络）需要什么</span></h3><p><strong><span>JH</span></strong><span>：你认为要让更多人把 fediveal 看作更好的解决方案需要什么？乳齿象现在是我的社交网络。我不使用其他东西，因为我不想让算法显示它认为我应该看到的内容，而不是我自己想看到的内容。我关注别人是有原因的。我开启通知是有原因的。我更喜欢用这种方式体验社交媒体，而不是每次来这里都觉得“天哪，总是同样的人和同样的话题”，那是个泡沫，我不想成为其中一员。还有其他方面，比如缺乏广告，这非常棒。</span></p><p><span>其中一个很大的原因是我能控制自己的社交存在感。我是那种疯狂的人，只管理单人实例。我很喜欢拥有 henshaw.social 的想法，并且能掌控我社交存在的每一个方面。我很喜欢品牌，无论是非营利、营利还是其他品牌。我甚至在 coywolf.social 上运行过 Coywolf 品牌的实例。你可以掌控一切。让我抓狂的是，更多人看不到这一点。</span></p><p><span>我知道人们不在的大致原因：他们的观众不在。而且对很多公司来说，他们不能做广告，我知道这对他们很重要。话虽如此，你觉得社会需要什么，比如科技、政治或其他什么，才能让人们最终转向像我们在《Mastodon》上经历的那样的环境？</span></p><p><strong><span>ER：</span></strong><span> 好问题。我说了很久了：如果每个人都用烟雾信号，我们都会在烟雾信号点社交平台上。功能远不如用户重要，而这一直都是如此。</span></p><p><span>当社区里有很多想法和功能请求时，讨论会变成“我们绝对需要功能 X 来增长，因为这阻止了人们使用这个平台”，这有时会有些误导。虽然在某些情况下确实如此，但令人遗憾的现实是，只要你想接触的人在场，任何缺陷都可以被忽视。这也是为什么这么多人还在用 X，顺便说一句，那个平台简直糟糕透顶。</span></p><p><span>对这个问题最基本的回答是，你需要对 Fediverse 提供的更多了解，而这也需要更多了解其他平台从你身上带走的东西。我认为在这方面有着令人期待的发展，因为越来越多的人关心数字主权。人们不再愿意依赖美国科技公司，尤其是生活在欧洲、亚洲或地球上其他任何地方的人。Mastodon 和 Fediverse 提供的是一个你国家本地的社交媒体平台，不受美国或任何第三方软件开发者的限制。我认为，随着越来越多的人和组织意识到这一点，说服他人加入并在个人和组织层面使用 Mastodon 会变得更容易。</span></p><p><strong><span>JH</span></strong><span>：我很喜欢这个回答。这需要教育。这个答案其实让我很兴奋。</span></p><p><strong><span>ER：</span></strong><span> 这是一条漫长的路，因为一直都是关于教育。早在 2016 年 Mastodon 推出时，营销策略不断向人们解释 Twitter 之所以糟糕，是因为它的结构。信息是：“事情就是这样运作的。我们有不同的结构，运作方式也不同。因此，它不会遭遇同样的命运。”乳齿象提供了一种不会走同样路线的替代方案。而且一直以来，都是为了让人们相信这一点。</span></p><h3 id='为什么-rochko-把-mastodon-看作社交网络而不是社交媒体平台'><span>为什么 Rochko 把 Mastodon 看作“社交网络”而不是“社交媒体平台”</span></h3><p><strong><span>ER：</span></strong><span> 我过去常常用“社交媒体平台”来形容 Mastodon，但我认为更准确的是，我们正在打造的是一个社交网络。我认为这两个词是有区别的，因为媒体是你被动消费的东西。是电视，是广播，就是读东西。人脉就是你和别人建立人脉，和他们交流。我认为这一直是我们对 Mastodon 的认知和构建方式的一部分。</span></p><p><span>至于我们如何谈论这些，我们并不总是这样做，因为这样做的复杂性之一是人们非常在意你使用的词汇和定义。所以当你说“Mastodon 是一个社交网络”时，有些人会回应说，“Mastodon 是 fediverse 的一部分，也就是网络。那你怎么能说 Mastodon 是一个网络？”这就是为什么我们一直避免说“网络”，试图更像一个媒体平台。但我觉得我们应该更多地转向“社交网络”这个词。</span></p><p><strong><span>JH</span></strong><span>：我认为这个概念，尤其是与 Mastodon 有关的，是更积极健康的参与，而不是其他地方都是人们广播和表演的地方。这大概也是我谈论我喜欢 Mastodon 的原因时应该提到的一点。这是从其他电视台中暂时逃离的，我觉得其他地方都只是表演。我对 Mastodon 没有这种压力。在 Mastodon 上，我只是玩得开心，和感兴趣的人互动。</span></p><p><strong><span>ER：</span></strong><span> 我认为 Mastodon 和 fediverse 属于旧互联网的一部分，那个时代更多是为了相互交流和享受乐趣，而不是被动消费，基本上就是看电视，而 TikTok 其实就是这样，只是更糟。我觉得部分原因是 Mastodon 和 fediverse 永远不会付钱让人们为它创作内容？比如，你可以通过做艺术家、提供委托、卖艺术品赚钱，发帖介绍并引导人们访问你的网站，但付钱给你的不是 Mastodon。我们付钱不是让你创作内容。我们不是付钱给你增加观看量，然后根据你的观看次数付费，这几乎是所有其他平台都实现的。在 Twitter（X）上，你可以通过观看量赚钱。在抖音上，你可以通过观看量赚钱。所以基本上，你最终就像电视网络的电视台，只是过程很辛苦，因为你没有合同。你只是想做点什么，看看什么能坚持下来。</span></p><p><strong><span>JH</span></strong><span>：这又是表演性的。付钱给你只是另一种让你表现得很强的方式。</span></p><p><strong><span>ER：</span></strong><span> 是的，但关键问题是，显然被动消费的市场远大于主动参与的市场，我认为这也是数字多年来呈现得如此之多的原因之一，因为互联网已经转向了被动消费模式。</span></p><p><span>我个人认为 Mastodon 应该坚持积极参与模式，而不是试图吸引被动消费的观众。你仍然可以说被动模式会带来更多用户并让事情更简单，因为这就像打开电视然后关闭大脑，但它不会是我们今天所熟知的平台。那时的平台会不同。我认为互联网上仍有空间容纳像 Mastodon 这样的平台。</span></p><p><strong><span>JH</span></strong><span>：我认为你甚至可以说，在某个阶段，Mastodon 上会有更多真实的人参与、创作和分享，而这点比许多其他网络都多。我经常看到很多“用户”其实是机器人，无论是为了制造麻烦还是其他原因，但这并不一定是我们认为真正积极的人际互动。</span></p><h3 id='mastodon-为何选择-activitypub-及其是否会与-atproto-合并'><span>Mastodon 为何选择 ActivityPub 及其是否会与 ATProto 合并</span></h3><p><strong><span>JH</span></strong><span>：在您关注的所有去中心化协议和解决方案中，是什么促使您选择 ActivityPub 作为 Mastodon？</span></p><p><strong><span>ER：</span></strong><span> 参与 ActivityPub 开发的人曾大力推动让我把它应用到 Mastodon 中。我记得 GitHub 问题被打开，消息被发送。公平地说，当我开始研究时，我意识到它比我们当时用的更全面。有很多不足之处。正如我之前提到的，它基于公共订阅源并附加额外信息的理念，但本质上不过是一个网站的 RSS 订阅。它有交互性组件，并且利用了许多支持 Mastodon 功能的功能，以提供所需的用户体验。而 ActivityPub 承诺，基本上所有这些内容都会从一开始就内置，成为一个更简洁、包罗万象的解决方案，而不是混合使用 XML 和不同协议。ActivityPub 感觉更干净，也更有未来适应性。设计周全，</span><a href='https://www.w3.org/TR/activitypub/'><span>W3C</span></a><span> 正在开发它让我确信这是真正的作品。</span></p><p><strong><span>JH</span></strong><span>：你预见未来会有 ActivityPub 2.0 来解决大家对它的担忧，比如效率、可扩展性等问题吗？还是你觉得 ActivityPub 可能会和 </span><a href='https://atproto.com/'><span>ATProto</span></a><span> 或类似的平台合并？</span></p><p><strong><span>ER：</span></strong><span> 我觉得不太可能。我觉得没什么好合并的。我觉得 ATProto 在协议方面非常固执，几乎没有空间让它以不同的方式运作。但 ActivityPub 非常灵活。自从 2018 年实现以来，关于如何实现这些事情，已经有大量工作，因为 ActivityPub 本质上是一种语言。或者说，它是一种词汇表，开发者和联邦主义者一直在定义语法。比如，你怎么说 A，怎么说 B，彼此理解？</span></p><p><span>一些最基础的内容都内置了，简单明了，作简单。但当你想做更高级的事情，比如需要某种一致性，可以用相同的词汇但语法不同时，你们就无法理解彼此。因此，不同平台一直在合作，制定 fediverse extension 提案，定义协议中不同功能的理解方式。现在已经有相当多的相关内容，Mastodon 自己也参与过几项，最近的是引用帖，我们提议允许引用包含原帖作者同意的发布。我看到协议正朝着这种方向演变。所以这和 2018 年完全不一样，但在更官方层面上，依然是。所以，我认为不会有 ActivityPub 2.0，或者说，我不希望它变成 2.0。我觉得那是个坏主意。我认为该方案的延续和渐进演进将会发生，正在发生，这是一件好事。但此时彻底断绝已经不再是好事了。</span></p><h3 id='收听完整采访'><span>收听完整采访</span></h3><audio controls="" src="https://coywolf.media/file/coywolf/interviews/eugen-rochko/eugen-rochko-mastodon-interview.mp3" preload="metadata" style="width: 800px;"></audio><details style="margin: 1rem 0px;"><summary style="font-weight: bold; cursor: pointer; color: rgb(14, 82, 174); font-size: 1.2rem;"><font class="notranslate immersive-translate-target-wrapper" lang="zh-CN" style="word-break: break-word; user-select: text;"><font class="notranslate immersive-translate-target-translation-theme-none immersive-translate-target-translation-block-wrapper-theme-none immersive-translate-target-translation-block-wrapper" data-immersive-translate-translation-element-mark="1" style="margin: 0px !important;"><font class="notranslate immersive-translate-target-inner immersive-translate-target-translation-theme-none-inner" data-immersive-translate-translation-element-mark="1" style="font-family: inherit;">阅读音频文字记录</font></font></font></summary><transcript style="display: inline-block; margin: 0.5rem 0px 0px; background: rgb(234, 238, 242); padding: 1rem 1rem 0px;"><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong>Jon Henshaw</strong>: I’m here with the creator of Mastodon, Eugen Rochko, and I’m excited to finally meet you.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong>Eugen Rochko</strong><span>&nbsp;</span>…and I’m excited to talk to you in person. Well, not in person, but you know what I mean.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Jon Henshaw" style="text-decoration: none;">JH</abbr></strong>: It’s more in person than it’s ever been. Yeah. As opposed to the random Mastodon post. Yeah. So it’s neat to see somebody from afar and just get to to know them a little bit. So one of the one of the reasons I really wanted to reach out to you was just the announcement that that you were leaving Mastodon, at least in your current capacity. I know you’re still gonna be an advisor, but I felt that personally because I had a software company for about 10 years and it was the greatest feeling ever to finally like be able to leave that, you know, because I was ready to leave it for years, but couldn’t.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;">Are you feeling sort of a similar relief of like, even though you’ve loved it and you made it and stuff to be able to move on to something new?</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Eugen Rochko" style="text-decoration: none;">ER</abbr></strong>: Yeah, I mean, I’d say it’s like a mixed bag of feelings because there is definitely an element of relief. A relief that I’ve only felt in a similar way when I went on my honeymoon with my wife. And for the first time, Mastodon had a DevOps engineer and some other people to actually run it and handle all the tasks while I was gone.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;">Like that was the relief I felt back then. It’s like, oh, finally, I don’t have to do everything. I can just forget about it for a while. And I’m feeling a similar relief now, which is, finally, after 10 long years, this is kind of not my problem anymore.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Jon Henshaw" style="text-decoration: none;">JH</abbr></strong>: That is a really good feeling to go on vacation, in your case you’re honeymoon, and to know that there’s somebody there who can actually fix something or deal with something while you’re gone. You can actually just relax for like the first.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Eugen Rochko" style="text-decoration: none;">ER</abbr></strong>: Yeah, yeah. That’s been one of the hardest parts, I think, is because a long time I’ve been doing this alone. I started working on Mastodon in 2016, and it wasn’t until 2023 that we officially had a second hire, I think.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;">It’s not that, I mean, it has to be specified that alone, by alone, I mean like working on it full-time or like even being on the team officially, because there’s been people who freelanced for me before that. And obviously there’s a lot of contributors from the community to the open source software of Mastodon, but 2023 was the first time that we had somebody to handle the tasks of running Mastodon social and handling maintenance of the repository without me and so on and so forth. And since then I’ve only delegated more and more tasks. Now there’s a lot of people working for Mastodon, I have to add an asterisk by a lot. I mean like about 10 or so. I don’t mean like, you know, because in the software world, a lot can mean a lot. Mastodon is still a very, very small organization in the scheme of things, but compared to 2016, it’s 10 times larger.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Jon Henshaw" style="text-decoration: none;">JH</abbr></strong>: Yeah, yeah, for sure. I want to get more into some Mastodon related questions, but I’m always interested in more of the career origin story. And so I kind of want to start at the beginning of your career and just ask you what got you into coding? Like what drew you to it? How did you sort of start?</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Eugen Rochko" style="text-decoration: none;">ER</abbr></strong>: Gosh, okay, that’s going way back. Well, I think my first coding attempts were I wanted to make a video game. I was a child. It was before I moved to Germany, so it was before I was 12. I don’t know, could have been 10. I think I had bootleg copies of some game maker software. Obviously I of course had some 3D modeling software as well as I was, know, born in Russia. It was the peak of the bootleg industry over there. To buy some software, you would go to the market and you would just buy like a CD with a hundred different pieces of software for, I don’t know, the equivalent of probably one dollar. And it came with a key gen included and sometimes it didn’t even need a keygen, dependent on the software and how secure it was originally. But yeah, so I had access to 3D modeling software and some game making programs. I don’t remember which anymore. There was different game makers at the time. And I remember just messing around trying to make something.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;">I think the peak of what I achieved back then was having like a shiny ball sphere move around through terrain in three dimensions and that was about it. Like my first attempts I remember some programming that I didn’t really understand back then was like piecing together documentation and just literally like a monkey and a typewriter type thing until something works.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Jon Henshaw" style="text-decoration: none;">JH</abbr></strong>: Trial and error, figuring it out until something.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Eugen Rochko" style="text-decoration: none;">ER</abbr></strong>: Exactly. And then it wasn’t until a couple years later after I moved to Germany where I got into making websites and it was because I was… Well, I wanted to make a fan site for a cartoon that I was watching at the time. Avatar the Last Airbender, one of the best cartoons out there. So I was like… It was at the time that I think the second or third season were just coming out and there was a lot of online discussions about it and I was reading all of these fan sites and I wanted to be part of it. So I was coding my own as well.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;">It was like my first foray into HTML and then eventually upgrading to PHP and trying to build more fun features into the site, like having a forum and stuff like that. And that was all very extremely basic. And I think I probably was like 13 or 14 at the time and I was putting this on like some free hosting platform under a fake name and so on.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;">I remember being very afraid that somebody would find out that I put like a fake name on the free hosting website and somebody would come and get me.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Jon Henshaw" style="text-decoration: none;">JH</abbr></strong>: That’s hilarious. Nobody, nobody can know you though. So I’m, picking up a theme of what I would call autodidact, which is teach yourself how to do these things. It sounds like obviously you you’re learning from other people’s documentation or videos or whatever it might be, but like, it sounds like as you went along, you wanted to do something and you figured it out. Like you just trial and error. Like I said, banging on the keyboard, like a monkey, which we’ve all done.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Eugen Rochko" style="text-decoration: none;">ER</abbr></strong>: Yeah, I kind of started my career in software development before I even went to Uni because I was obviously the fan sites that was early work and then eventually I moved on to making WordPress themes and plugins and eventually eventually moving on to Ruby and starting to to do more complex applications and I remember already starting to like freelance to try to make some money on the side and save up. And then…</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Jon Henshaw" style="text-decoration: none;">JH</abbr></strong>: Are you 18 yet? Are you 18 yet? Are we talking like you’re still 15 or something?</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Eugen Rochko" style="text-decoration: none;">ER</abbr></strong>: I’m trying to remember. I don’t remember when I started freelancing for sure. I think that my very first small clients were before I was 18. But probably the more serious projects were after I graduated high school. But I went to Uni basically already knowing that I kind of have the skills to make money with this career. But wanting to get a degree to satisfy my parents and have some kind of some kind of safety net. Also because I knew that in Germany it at least from what I heard at the time it didn’t matter so much what you could do as what kind of degree you had to get a job so I kind of like I needed it. My attitude to Uni was like I feel like I don’t really need this but I’m gonna do it just to have a check mark but then, in hindsight, after going to Uni and studying computer science, I mean, I only have a bachelor of science. I didn’t go all the way to masters, but it was very useful, and it was stuff that I learned that I did not expect. And I think it’s helped me along the way. I think it’s important knowledge.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Jon Henshaw" style="text-decoration: none;">JH</abbr></strong>: So you weren’t completely bored out of your mind, at least in the first year or two of classes?</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Eugen Rochko" style="text-decoration: none;">ER</abbr></strong>: I can’t promise that. I have to admit, if we’re doing confessions, I spent most of my university just kind of doing random stuff on my laptop and not listening.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Jon Henshaw" style="text-decoration: none;">JH</abbr></strong>: Because you already knew how to do it, right? It’s all basic computer science.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Eugen Rochko" style="text-decoration: none;">ER</abbr></strong>: Yeah, but I did, I did fail a couple of exams a couple of times too. So it wasn’t like, you know, it wasn’t just breezing through, it was difficult. And the degree was, was difficult for everybody actually. Like the first, the first year there was so many people, there were so many people in those classes, they were full. And then as you went to second and third year of this degree, you just go into these more advanced classes, it would be like less than 10 people sitting in the room.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Jon Henshaw" style="text-decoration: none;">JH</abbr></strong>: Oh yeah, that’s small. So then you kind of kept doing stuff, it sounds like on the side or as a consultant, you got your degree and then looking at your LinkedIn, it looks like you had a handful of regular jobs at companies or something like that.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Eugen Rochko" style="text-decoration: none;">ER</abbr></strong>: I was freelancing but that was basically all during university. I don’t know how they’re chronological on on linkedin specifically but most of them were kind of ongoing on and off for you know during university and funnily enough Mastodon was one of the things I was also doing in university to not pay attention to class.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Jon Henshaw" style="text-decoration: none;">JH</abbr></strong>: Okay, that’s kind of the timeframe is 2016.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Eugen Rochko" style="text-decoration: none;">ER</abbr></strong>: Yeah, yeah, yeah, I think if I remember looking up the first commit in the GitHub repositories from March 2016 and then it wasn’t public on Hacker News until I think September 2016. that was the time that was being developed for the first time.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Jon Henshaw" style="text-decoration: none;">JH</abbr></strong>: When I think of something like Mastodon, it’s like audacious, you know, it’s sort of like, I’m going to make a thing to compete against the big ones, the Twitter at the time and so on.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;">What was sort of like going through your mind at the time that this is going to be sort of a fun project. Maybe somebody will use it or you’re like, or was it on the further extreme of just like, I’m going to create the alternative that everybody switches to, you know, in this federated type of approach.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Eugen Rochko" style="text-decoration: none;">ER</abbr></strong>: I mean, I guess the big secret is that I didn’t think that it would be competing with Twitter and do all of that ambitious stuff. I just wanted to work on a fun project and I wanted to have an alternative to a website that I didn’t like anymore. And to be fair, I did research. How could I make this better for other people as well? I remember interviewing some people on forums and stuff, like what do you wish was different about Twitter, and trying to build it around those expectations. It was also the kind of the post-Gamergate period on Twitter. So like a lot of people were traumatized by how that platform was, and how many alt-right and Nazi people were active on it. And so that influenced a lot in how the initial mass was being developed because I was trying to make it like, how do we prevent this? How do we make this safer?</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Jon Henshaw" style="text-decoration: none;">JH</abbr></strong>: Was the Fediverse component always a part of it or did that come later?</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Eugen Rochko" style="text-decoration: none;">ER</abbr></strong>: No, absolutely, yeah. Because my first contact with the Fediverse was actually not building Mastodon, but using a platform called GNU Social. And my first ideas were to build a Tweet Deck equivalent for GNU Social. And it wasn’t until I started working on it and wanted to start looking up the documentation for the Social API that realized that it would actually be simpler to try and make a start from a blank slate than try to fit my expectations onto a somewhat antiquated piece of software by that time.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Jon Henshaw" style="text-decoration: none;">JH</abbr></strong>: Was there a solution prior to ActivityPub? Because I think I read somewhere that ActivityPub was added later.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Eugen Rochko" style="text-decoration: none;">ER</abbr></strong>: True. the first platform, actually you know what I’m not going to make the statement the first federated platform because I don’t know, technically email is federated. The first social federated platform, social media-like federated platform that I know of was Identica founded by even in 2010 I think around that time.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;">I remember I might have used it or I might have at least seen it at the time because I had friends who were programmers who were very into this federation idea.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;">But I wasn’t super heavily aware of it or interested. I was just kind of aware that it’s there. There were more interesting things happening. I think Google Wave something was the first experiment. First experiment, I remember people creating links and then having a shared workspace. Everyone was typing at the same time. It was revolutionary at the time.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Jon Henshaw" style="text-decoration: none;">JH</abbr></strong>: Now it’s another dead Google product.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Eugen Rochko" style="text-decoration: none;">ER</abbr></strong>: Yes, among thousands. But yeah, so I was kind of aware that this kind of space existed when I started looking for it again in 2016.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;">By the time that I came back to GNU Social, the ecosystem and the protocol was called OStatus. I don’t know if it was originally called that or if it kind of transitioned to being that over between 2010 and 2016. It’s possible it was OStatus from the very beginning. I know that it was never a completed standard. It was always basically what’s called a draft. So it was a collection of different component protocols, but also some of them were in draft stage, some were actual standards like Webfinger. And basically that’s how this whole thing worked. It was centered around the concept of feeds, kind of like RSS feeds, but they were using Atom with some extensions, some of the activity streams extensions that are kind of the same as what we’re using in ActivityPub. It was like the predecessor for basically telling in more detail, like what is this activity? What is it doing? What is the metadata for like attached images and whatnot? And so obviously I was never and have never been a protocol designer. So I just, you know, researched how did GNU Social do it, what’s this protocol, how do you implement it, and I tried to do the same with Mastodon. There were other examples. GNU Social itself was open source, so could always look up how did they do this, how did they do that, but there were a couple other Fediverse projects that I was able to look up to solve.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Jon Henshaw" style="text-decoration: none;">JH</abbr></strong>: I think there was Diaspora back then and some other things.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Eugen Rochko" style="text-decoration: none;">ER</abbr></strong>: Diaspora was there, but Diaspora, to be fair, was not part of the Fediverse. They had their own. They were also federated social media platform, but they had their own protocol that was Diaspora specific. And I never, I remember being interested in it. And I think a couple of years earlier than that, when they had their Kickstarter.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Jon Henshaw" style="text-decoration: none;">JH</abbr></strong>: (18:17.006) You’re saying to Diaspora is sort of like its own non-federated protocol. I was gonna ask you, do you remember TentIO?</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Eugen Rochko" style="text-decoration: none;">ER</abbr></strong>: Yes, yes, I do remember.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Jon Henshaw" style="text-decoration: none;">JH</abbr></strong>: Was that also sort of like not federated?</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Eugen Rochko" style="text-decoration: none;">ER</abbr></strong>: Just a correction, I did not say Diaspora was not federated, because I think it was. It was just not, it was not using the same protocol as everything else that I was using. And I think the same is true for TentIO. I think it was its own project that was like trying to do it in a new way. And I don’t know much else beyond that. I remember looking at their website. I don’t remember what it said.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Jon Henshaw" style="text-decoration: none;">JH</abbr></strong>: I just remember thinking Diaspora hadn’t really worked out that well. and TentIO just really intrigued me. I was like, this is going to finally be it. Like, this will be the one, that’s going to work. And, and I was, I had my own service. I was going to call it camp out cause it was called tent. You know, it was very clever. That was a joke. And then it just like went away and I was so frustrated. It’s like watching these different attempts sort of happen. and then came along ActivityPub and then came along Mastodon. I meant Mastodon came in and then ActivityPub. What about ActivityPub from all the protocols and solutions you were looking out there got you to be like, I’m going to commit to this. Like, this is going to be the protocol that’s going to be used for Mastodon moving forward.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Eugen Rochko" style="text-decoration: none;">ER</abbr></strong>: Well, there was heavy campaigning from people who were working on ActivityPub to make me implement it in Mastodon. I remember GitHub issues being opened and messages being sent. And to be fair, when I started looking into it, I realized that it was more well-rounded than what we using at the time. There were a lot of shortcomings. As I mentioned before, was based around the idea of public feeds with extra information on top, but essentially not much more than having an RSS feed for a website. And there were components for interactivity. Obviously, it was using something called Salmon to send replies back to people. But a lot of the stuff that supported Mastodon’s functionality to actually get get the user experience to be what it needed to be was, let’s say creative, applications of that protocol or stretching it to its limit. And ActivityPub promised to basically all of that has been baked in from the very beginning. And it would just be a cleaner, all-encompassing solution, rather than having this mix of XML and different protocols and it just felt cleaner and like it was more future-proof, like it was actually thought out and of course the fact that it was being developed by W3C convinced me as well because like okay this is the real deal.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Jon Henshaw" style="text-decoration: none;">JH</abbr></strong>: Standards-based. Do you foresee a future where we’ll call it ActivityPub 2.0, whatever, you we want to call it. But just a future where that protocol kind of addresses concerns people have had about it, concerns around like efficiency or scalability and that type of thing. Or do you see ActivityPub potentially kind of merging with something like an ATProto or something like.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Eugen Rochko" style="text-decoration: none;">ER</abbr></strong>: I don’t see that happening. I don’t think that there’s a lot there to merge, if I’m honest. think that ATPoto is very, as far as protocols go, it’s very opinionated about how things work and there’s not a lot of room for making it work differently. But ActivityPub, on the other hand, is very flexible and over the past, how many years since it’s been since 2017 when we first started discussing it. think in Mastodon was implemented in 2018. I remember the big launch. There’s been a lot of work on defining how things are done because essentially what ActivityPub is, it’s kind of a language. It’s a, or rather it’s a vocabulary and what developers and the federalists have been doing is defining grammar. Like how do you say thing A and how do you say thing B and understand each other? Some of that is baked in. So some of the most basic stuff is baked in and very straightforward and easy to do. But when you want to do something more advanced, you need some kind of agreement because you can use the same vocabulary, but if you have different grammar, it can basically, it doesn’t help you understand each other. So different platforms have been collaborating to create Fediverse extension protocols or proposals, sorry, proposals, not protocols, to define how different functionality is actually to be understood within the protocol. And there is now quite big collection of these and, and Mastodon itself has worked on a couple, most recently the quote post thing, where we’ve worked on a proposal that would allow quotes to include consent from the author of the original post to be published. And what I see is that the protocol is evolving this way. So it’s not, it’s not, verbatim the same protocol that it was in 2018 but also on a more official level it still is, right. So, I don’t think there’s going to be an ActivityPub 2.0 or rather I yeah I would I wouldn’t want it to be a 2.0 I think that would be a bad idea I think a continuation and progressive evolution of the protocol is going to happen is happening and is a good thing. But a clean break would at this point no longer be a good thing. It’s kind of like, I mean, why did Blizzard turn Overwatch into Overwatch 2, right? What was the point of that? It became kind of a worse game.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Jon Henshaw" style="text-decoration: none;">JH</abbr></strong>: It’s interesting because, one of the things I heard was with quote posts, which is something I wrote about because I was pretty excited about it. I wrote about that on Coywolf because I really liked sort of the controls that were baked in for the user from a safety perspective. What I pick up on is I feel like Mastodon is in a position to help push the protocol to a better place. So if I heard you correctly, the way quote posts were done in Mastodon helped create sort of a proposal for how that could be, the rules around that could be handled in the protocol. And either they’re already done the same way, or if ActivityPub adopts that, then the people working on Mastodon today would would tweak the code to work with whatever changes remain to ActivityPub.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Eugen Rochko" style="text-decoration: none;">ER</abbr></strong>: Mostly right.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Jon Henshaw" style="text-decoration: none;">JH</abbr></strong>: It doesn’t have to be completely right. Cause I’m not saying I know exactly everything I know what I’m talking about. So, okay.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;">I got pretty excited when, Zuckerberg and Meta were actually being serious about integrating ActivityPub into threads. And a lot of people I knew were just like, it’s not going to happen. They’re going to screw it up. They’re going to like, you know, whatever. like, no, I think, I think it’s for real this time. And The Verge had a couple of good interviews, you know, where it’s like, no, I think they’re really committed to it. And, we had some really nice updates that came through. I didn’t like them all. It felt like they were making really poor choices because of maybe their legal department, you know, where they’re making it so convoluted.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Eugen Rochko" style="text-decoration: none;">ER</abbr></strong>: That’s exactly how I would put it. It’s like they’ve been burned by Cambridge Analytica and they didn’t want to repeat of that. And that really limited what they were able to do and what they are able to do. I obviously cannot speak for them. I haven’t heard, I haven’t spoken to anyone from their side for a long time now. But from our discussions when they were launching it and they were asking questions about implemention details and how to do this, how to do that and us asking them like what will you be able to do? Just a lot of it is like we can’t do that because of legal which ended up being extremely disappointing from my perspective because I think the product that they launched is just it’s the promise is there but it really does not deliver to the very end because this the whole concept of federation is behind an additional opt-in that people are not even aware about is not helpful and there are a couple of details about that like like designed so carefully that it’s almost alienating like how the pop-up appears like 30 days every 30 days asking if you still want to continue fediverse sharing as if it’s like, my god, like I didn’t know, stop it, you know, like.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Jon Henshaw" style="text-decoration: none;">JH</abbr></strong>: It’s a joke. I mean, it is terrible what it ended up becoming. And it sounds like it started off pretty good. The people were in the right place as far as like hearts, minds, whatever, whatever their intentions were. It even sounds like from some of The Verge interview stuff with Mark that that was, you know, genuine intention to do these things to create interoperability. But it all kind of ground to a halt because of legal concerns is what it sounds like.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Eugen Rochko" style="text-decoration: none;">ER</abbr></strong>: So it’s far from perfect, but at the same time I do see, you know, people on threads in my home feed or master, which is already a huge win. I mean, that would not have been possible otherwise. And I think it enhances the experience. Some people might disagree because like, people using Threads. I don’t want to see them. I don’t want to know about them, but you know, for somebody who cares a little bit about, you know, being in touch with some more mainstream people, creators and so on, it can be an enhancing experience rather than a negative one.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Jon Henshaw" style="text-decoration: none;">JH</abbr></strong>: I totally agree. I was going to say, we definitely, more you than me know there are plenty of outspoken people and plenty of people who manage instances that are like, Threads is an insta-block. But for others, which it sounds like you and I are kind of similar. I appreciate it at the very least to be able to follow some people to be informed where I wouldn’t otherwise if they didn’t have even the most basic of ActivityPub type of integration, where I could at least follow or they might even know I had some interaction, even though it’s very limited because of the way they have it locked down. I really like it. Like I, there are still good, there are plenty of good people on Threads, that I want to hear from. I want to know when they post something. Sometimes it’s even a brand, but you know, usually it’s a person, a journalist, whatever it might be, that that’s what they’ve chosen and that’s fine, that’s their choice.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;">What do you think it will take to get more people. I know this is not first time you’ve been asked this question to get more people to be like, this is a better solution. From my perspective, Mastodon is my social network now. I don’t really use anything else. and, and that’s because I don’t want some algorithm showing me what it wants to show me versus like what I actually want to see. Like I follow people for a reason. I turn on notifications for people for a reason. Like I want to experience social in that way versus like every time I come there, it’s just like, oh my God, it’s always the same people that they want me to see their post and always the same topics that they’re trying to get me to see, which is a bubble or whatever I don’t want to be a part of.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;">There’s also other things, know, it’s the lack of advertising is kind of fantastic. There’s so much about it, controlling my social presence. I run, I’m one of those nutty people who runs a single person instance because I love it. I love the idea that I have henshaw.social and I control every aspect of my social presence. I love it for brands. know, a brand can be a nonprofit, or-profit, whatever. I love it for brands, which I’m running for Coywolf at coywolf.social. And it’s like, you control everything. It drives me nuts that more people don’t see that. And I know the answer, I know the general answer, which is, people aren’t there, my audience isn’t there, or it’s whatever it might be. Or, for lot of companies, it’s like, can’t advertise, you know what I mean? I know that’s important to them. With all that said, what do you think it’s gonna take, I don’t know, in society, with technology, something happening, something political, whatever, to get people to finally move over into something like we’re experiencing on Mastodon?</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Eugen Rochko" style="text-decoration: none;">ER</abbr></strong>: Good question. I mean, I feel like your question evolved a little bit since you started asking it because I think originally I understood it as like what does Mastodon need to do for more platforms like threads to start thinking seriously about implementing ActivityPub. The answer to which would be it has to grow because I think what happened is that obviously the engineers who were working on Threads were excited to do something decentralized and participate in the Fediverse. And before it launched, they felt like on an organizational level, they felt like they needed to promise something different to Twitter, some more freedom to creators to move around, to have this decentralization that would basically provide a layer of security against things happening that have happened on Twitter for them to gain market share. But as it turned out, once they launched, they got a lot of users regardless and their priorities quickly shifted. So instead of, there are features missing in our Fediverse integration, it became, we need to build like an NBA score widget into the sidebar or something, you know? And I think that the only way around that to put this back on their roadmap and on more companies and platforms and communities roadmap is for the Fediverse to become a bigger component in the market, to have a bigger market share because it’s all about people. I’ve been saying this for a long time, but if everybody was using smoke signals, then we’d all be on smoke signal dot social. The features matter a lot less than the people who are using the platform, and it’s always been this way. And sometimes it can be bit misleading because you get a lot of ideas and feature requests in a community and then the conversations become like, we definitely need feature X. This is what’s stopping us from growing. This is what’s stopping other people from using the platform. And sometimes in individual cases, it’s true, but the sad reality is that any kind of flaw can be overlooked as long as the people you want to reach are there. And that’s why so many people are still using X, which is absolutely god-awful platform.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Jon Henshaw" style="text-decoration: none;">JH</abbr></strong>: Well, with your answer, you talked about that it likely will take these other platforms having better integration with the vocabulary, the way that ActivityPub works so that like Mastodon could talk to them. I was kind of was going two different directions. I think the one that I was really thinking about was people moving over to Mastodon in a similar way, and for those listening, I’m not saying it’s good or bad, but in a similar way to WordPress, know, where, WordPress just kind of became the de facto CMS because you know, people would, again, would argue maybe not today, but leading up to today, it was so easy to install. There’s so many benefits to it. It’s has a huge developer community. you know, so to the point that in 2025, over 50% are using it.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Eugen Rochko" style="text-decoration: none;">ER</abbr></strong>: To answer your more broad question, which is what will it take in society for people to switch to the Fediverse in large? I think the answer is there. The most basic answer is that there needs to be more knowledge about what the Fediverse gives you. And that requires more knowledge about what the other platforms take away from you. And I think there is promising developments on this front because more and more people care about digital sovereignty. People no longer want to rely on US tech companies, especially if those people are living in Europe or Asia or any other place on earth. And what Mastodon and the fediverse offer is that you can have a social media platform that is in your country, that is local to you, that is not subject to whatever is happening in the US. Or for any matter, not subject to any third party that is doing whatever, even us, people developing the software. And I think as more people and more organizations are realizing this, the easier it becomes to convince people to join Mastodon and start using Mastodon on a personal and organizational level.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Jon Henshaw" style="text-decoration: none;">JH</abbr></strong>: I love that answer. It’s gonna take education. That answer actually excites me.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Eugen Rochko" style="text-decoration: none;">ER</abbr></strong>: It’s a, it’s a long road. It’s a long road because it’s kind of, it’s always been about education. Back in 2016, when it launched the, if I may do air quotes, the marketing strategy for Mastodon has always been explaining to people Twitter is bad because this is how it’s structured. This is how it works. We have a different structure. It works differently. Therefore, it will not suffer the same fate. It provides an alternative that will not follow the same path. And it’s always been about convincing people of this.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Jon Henshaw" style="text-decoration: none;">JH</abbr></strong>: That’s great. I think the last part of that that I want to ask you is, does there still need to be certain features that are typical? And I don’t know if that means adding some type of quasi algorithm or adding or whatever it might be. And I know that you’re working on packs, you know, so it makes it really easy for people to instantly follow people with similar interests, which is you know, that’s one of reasons why I use social media is because I want to interact with people with similar interests. And so do you think it’ll likely take adding some of those features and things that you’re seeing success for as long as it fits within the paradigm of what you want it to be. Meaning like at this point, even as I stated earlier, you know, we don’t want it to be algorithm driven and stuff, but…</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Eugen Rochko" style="text-decoration: none;">ER</abbr></strong>: I think as before the answer to this is a couple different angles. There’s never just a singular answer to these questions because it’s quite a complicated area.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;">So first packs, we’re actually calling them collections now internally and probably publicly as well. But I do think that one of the things that has always been hindering Mastodon adoption is discovery and onboarding. So on a platform like Twitter or Facebook, where you just have a single website and a database with everything that’s in it, a person joining, you just show them whatever is interesting to them.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;">You you have all the data, have all the users, search works as expected. It’s the most simple thing to do. On a decentralized platform like Mastodon, there’s kind of no guarantee that whatever the user is interested in is already in your database, and there’s an element of you would browse around other websites to find this content and then subscribe to it. But obviously this is not, this hasn’t stood the test of time and the skillset of an average internet user, people have lost the ability to browse websites. So now everything is a lot more like you never have to leave your interface on Mastodon and you never have to like venture out. I guess unless somebody sends you like a specific link through an instant messenger. So solving the discovery problem, helping people get started with here’s the people I may want to see from is going to be very helpful in that regard. So I think that is the big hope around collections and I think it is going to be helpful. That being said, it’s always there’s pros and cons and collections may also be, when working on this feature, we’ve heard feedback from Bluesky developers who worked on their starter packs feature of how this feature was abused on Bluesky, how it was misused to basically you would create a list of like interesting people and like most of them would be, you know, what the user wants to see. But then you would include like one or two accounts. They’re just like extra and it would just accrue followers and become like a big influencer account or a spam vector or something like that. And so we’re obviously thinking about how can you prevent that? How can you avoid that? But on some level, having a feature like this, there’s always going to be some kind of risk with that. Any kind of publicity always brings with it a risk of it being misused in some way. So, I mean, it’s all going to be tightly integrated with the report feature and all sorts of things, but yeah.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Jon Henshaw" style="text-decoration: none;">JH</abbr></strong>: It’s funny you say that because I’ve been doing SEO for like forever. And of course SEO has a pretty bad connotation to a lot of people because there’s a lot of people in SEO who have done a lot of bad things. And it just made me sort of laugh when you’re describing it. It’s like, yeah, I know plenty of people who would do that. I know plenty of opportunists who would be like, yeah, that’s my vector.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Eugen Rochko" style="text-decoration: none;">ER</abbr></strong>: Yeah.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Jon Henshaw" style="text-decoration: none;">JH</abbr></strong>: But what you did describe, I feel is consistent with the way Mastodon has been built to this day, which I think was also described in the new quote feature, which is everything that, does get added has a lot of thought behind it. And, and I think care and, and I really like hearing that whatever collections ends up being will be the better version than what was, say, launched on a different platform.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Eugen Rochko" style="text-decoration: none;">ER</abbr></strong>: I’ve historically abused the phrase social media platform to describe Mastodon, but I think it’s more true that what we’re building is a social network. And I think that there is a difference in those two terms because if you think about it, media is something you consume passively. It’s TV, it’s radio, it’s, you know, just reading stuff. Network is you’re networking with people, you’re talking to them. And I think that has always been a part of how we think of Mastodon and how we’re building Mastodon to allow that. But obviously in terms of like how we speak about it, we haven’t always done that because there’s one of the complexities of doing this is that people care a lot about the words that you use and the definitions that you use. So when you would say, Mastodon is a social network, they would be like, well, Mastodon is part of the Fediverse, which is the network. So how can you say that Mastodon is a network? That’s why we’ve been kind of avoiding saying network and trying to be more like media platform, social media platform. But, you know, that’s, I feel like we should pivot more to the other one.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Jon Henshaw" style="text-decoration: none;">JH</abbr></strong>: I think of it as positive or healthy engagement versus everything else being a place where people broadcast, where people are performative. And that’s probably that’s one of things that I should have included when I was talking about things I like to mess about Mastodon is it is a respite from the other networks and that I feel like every other place is about being performative. And I don’t feel that pressure on Mastodon. On Mastodon, I’m just like having fun and I’m engaging with people that interest me.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Eugen Rochko" style="text-decoration: none;">ER</abbr></strong>: I think Mastodon and the Fediverse is part of the old internet that was more about, you know, communicating with each other, having fun, and less about passive consumption and just essentially watching TV, which is what TikTok is, except worse. And I think that part of this is that Mastodon and the Fediverse will never pay people to create content for it? Like you can make money off of being on it by, you know, you’re an artist and you offer commissions or you sell artworks and you post about it on Mastodon, you direct people to your websites, but it’s not Mastodon who’s paying you. We’re not paying you to create content. We’re not paying you to get more views and pay you based on the amount of views that you get, which is what’s been implemented in almost every other platform, I believe. On Twitter, you get money for views. On TikTok, you get money for views. So basically you end up being almost like a TV channel for a TV network, except it’s a hustle, because you don’t have a contract. You’re just trying to make something and see what sticks.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Jon Henshaw" style="text-decoration: none;">JH</abbr></strong>: Again, it’s performative. It’s performative. Again, that’s just another thing to push you to be performative.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Eugen Rochko" style="text-decoration: none;">ER</abbr></strong>: Yeah, but the big question is that obviously the market for passive consumption is much bigger than the market for active participation, which I think is some of the explanation for why the numbers have turned out this way over the years, because the internet has moved to the passive consumption model.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;">I personally think that Mastodon should stick with active participation model and not try to appeal to the passive consumption audience as much as you could argue that it would bring more users in, make it easier because obviously it’s easier to just turn on the TV and your brain off, but it wouldn’t be the platform that we know today. It would be a different platform then. And I think there is still space on the internet for having a platform like what Mastodon is.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Jon Henshaw" style="text-decoration: none;">JH</abbr></strong>: I think you could even make an argument that at some point you could actually have more real people engaging, creating, sharing on something like Mastodon than maybe some of the other networks. I read all the time about a huge percentage are probably just bots, a huge percentage are just there, whether it be to cause trouble or whatever, but it’s not necessarily what we would consider to be genuine engagement.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;">Alright, you you have been really generous with your time. I have one last question. And that is, what are you going do next? mean, I know you’re still an advisory role. I know you’re not disappearing from Mastodon, but I also know that you’re going to do something next. Like you’re like, this is good, I’ll continue to help, but like I need to move on with my life and do something, maybe something different. What is that?</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Eugen Rochko" style="text-decoration: none;">ER</abbr></strong>: That’s a good question. As you pointed out, I still have a role at Mastodon. I’m now an executive strategy and product advisor, which is very long title that I haven’t seen anywhere else before, but I guess it fits. I’m basically coaching and advising the new leadership team. I have a lot of knowledge, historic and current, about the Fediverse, the key players, the community and my task is to transfer that knowledge into the new generation of leadership at Mastodon. But also it is to provide a voice during product decisions. So I no longer have the authority to say, we’re doing this, we’re doing that. But I still get to say, I think that this or that is a bad idea and have my opinion heard. And of course I’m still in charge of the merch, which is actually something that’s been bringing a lot of joy to me.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Jon Henshaw" style="text-decoration: none;">JH</abbr></strong>:<span>&nbsp;</span><em>Jon shows Eugen the Mastodon plushie on camera.</em></p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Eugen Rochko" style="text-decoration: none;">ER</abbr></strong>: That’s lovely to see. That is lovely to see. It always brings a lot of joy.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;">As I’ve mentioned in my announcement, I’ve been feeling burned out for a couple of years now, since 2022. The collapse of Twitter as a platform has been a good thing for Mastodon in all things, but it’s also put this intense spotlight on my work and put so much responsibility on my shoulders. And growing the organization, having more people has pushed me kind of far out of my comfort zone. And working on merch and the plushies and so on has been like almost like a little vacation within my work. And just because it’s such a physical component that, you know, unlike all of the code that we’re writing that is just somewhere in the ether, it’s a physical product that you can touch and you can squish. And I love the community aspect of it because I follow the Plushodon hashtag and I ask people to, you know, post under it when they get their plushie or some other merch items and I just love seeing people like unpack the toy and play with the toy and like the the situations and scenes that they put it because it’s basically like a character and it gets to participate in all these different scenarios in the world, like sometimes it goes to the polls to vote and sometimes it’s sitting somewhere playing with a cat and some you know and it’s just it’s it’s it’s very delightful thing.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;"><strong><abbr title="Jon Henshaw" style="text-decoration: none;">JH</abbr></strong>: So it’s funny you say that because when I had my company, my very favorite thing was creating the swag and the t-shirts and in my business partner, we used to do these poker tournaments at a conference, the annual conference we would have. And that was the only thing he enjoyed doing like out of the entire year. Out of everything we did in the business, we had to do, is the only thing he actually like enjoyed in life, was creating this special coin, which was just for the event. Everything else he was miserable. But that was the one time where he was happy and had a smile on his face because that was like the thing that brought him joy and everything else was like, I hate this. So I think that’s, you know, as far as you enjoying that, I think a lot of people can relate.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;">Thank you so much for spending this time. It was really fascinating to me you. I learned a lot. Right now I’m just really thinking about your answer about what’s going to make the biggest change is going to be educating the market. And now that’s where my head is.</p><p style="font-size: 17.6px; padding-left: 0px; padding-right: 0px;">Yeah, well, I’m happy to be of service.</p></transcript></details><h2 id='💬-评论'><span>💬 评论</span></h2><p><strong><span>Coywolf 会员可以评论和讨论任何文章。</span></strong><span> 了解更多关于</span><a href='https://coywolf.com/membership/'><span>如何成为会员</span></a><span>的信息。如果你已经是会员，请</span><a href='https://coywolf.com/?memberful_endpoint=auth'><span>登录</span></a><span>以发表评论。</span></p><p><img src="https://coywolf.com/wp-content/uploads/2025/06/b23d2a8517f1c253b8b922857a9bd192be8e87a3008ab90ac57c32e4cb382584-150x150.jpeg" alt="Headshot for Jon Henshaw"></p><p><strong><a href='https://coywolf.com/jon-henshaw/'><span>乔恩·亨肖</span></a></strong></p><p><span>Jon Henshaw 是 </span><a href='https://coywolf.com/'><span>Coywolf</span></a><span> 的创始人，也是拥有近三十年 SEO、数字营销和网络技术经验的行业资深人士。关注 </span><a href='https://henshaw.social/@jon'><span>@jon@henshaw.social</span></a></p><hr /><p>&nbsp;</p><h2 id='contact-coywolf'><span>Contact Coywolf</span></h2><p>&nbsp;</p><p><span>Coywolf LLC</span>
+<span>2020 Fieldstone Pkwy</span>
+<span>STE 900-122</span>
+<span>Franklin, TN 37069-4337</span></p><p>&nbsp;</p><p><a href='tel:+16154610902'><span>+1 615-461-0902</span></a><span> / </span><a href='mailto:contact@coywolf.com'><span>contact@coywolf.com</span></a>
+<a href='https://glossary.io/fediverse/'><span>Fediverse</span></a><span>: </span><a href='https://coywolf.social/@coywolf'><span>@coywolf@coywolf.social</span></a></p><h2 id='membership'><span>Membership</span></h2><p><span>Learn more about the </span><a href='https://coywolf.com/membership/'><span>features and benefits</span></a><span> of being a Coywolf member. Existing members can </span><a href='https://coywolf.com/?memberful_endpoint=auth'><span>sign in</span></a><span> to access all premium content and services.</span></p><h2 id='site-navigation'><span>Site navigation</span></h2><ul><li><p><a href='https://coywolf.com/news/'><span>Coywolf News</span></a></p></li><li><p><a href='https://coywolf.com/guides/'><span>Guides and insights</span></a></p></li><li><p><a href='https://coywolf.com/reviews/'><span>Product and service reviews</span></a></p></li><li><p><a href='https://coywolf.com/apps/'><span>PWAs (Progressive Web Apps)</span></a></p></li><li><p><a href='https://coywolf.com/newsletter/'><span>Coywolf newsletter</span></a></p></li><li><p><a href='https://coywolf.com/podcast/'><span>Digital marketing podcast</span></a></p></li><li><p><a href='https://coywolf.com/videos/'><span>Coywolf videos</span></a></p></li><li><p><a href='https://coywolf.com/blog/'><span>Coywolf blog</span></a></p></li><li><p><a href='https://coywolf.shop/'><span>Merch store</span></a></p></li></ul><p><a href='https://coywolf.com/policies-and-standards/'><span>News Policies &amp; Standards</span></a><span> – </span><a href='https://coywolf.com/human-generated-content/'><span>No AI</span></a><span> – </span><a href='https://coywolf.com/submit-tip/'><span>Submit news tip</span></a><span> - </span><a href='https://coywolf.llc/privacy-policy/'><span>Privacy Policy</span></a><span> - </span><a href='https://coywolf.llc/terms-of-use/'><span>Terms of Service</span></a></p><p><span>Coywolf uses </span><a href='https://coywolf.com/reviews/products/pressable-wordpress-hosting-review-wpengine-comparison/'><span>Pressable</span></a><span> for managed WordPress hosting and </span><a href='https://coywolf.com/reviews/software/fathom-analytics-review-best-google-analytics-alternative-privacy-first/'><span>Fathom</span></a><span> for privacy-first web analytics.</span></p><p><span>© 2017-2025 </span><a href='https://coywolf.llc/'><span>Coywolf LLC</span></a><span> All Rights Reserved</span>
+<span>Coywolf and the Coywolf logo are registered trademarks of Coywolf LLC</span></p></div></div>
+</body>
+</html>
